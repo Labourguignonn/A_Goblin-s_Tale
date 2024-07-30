@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwbklbfpr8a0a"]
+
+[ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/player.tscn" id="2_7rg0j"]
+[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/enemys/knight.tscn" id="3_27qjr"]
+
+[node name="TestBattles" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("2_7rg0j")]
+position = Vector2(461, 205)
+scale = Vector2(0.72, 0.76)
+
+[node name="knight" parent="." instance=ExtResource("3_27qjr")]
+position = Vector2(112, 427)

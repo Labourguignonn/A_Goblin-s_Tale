@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://j184hts6gb1t"]
+
+[ext_resource type="Texture2D" uid="uid://5a726lkku3qm" path="res://Assets/UI/Banners/Banner_Horizontal.png" id="1_60xhp"]
+[ext_resource type="Script" path="res://scenes/ui/gameUI.gd" id="1_ukdt8"]
+[ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_la3b0"]
+[ext_resource type="Texture2D" uid="uid://chcaocfjphq3p" path="res://Assets/UI/Buttons/Button_Blue_9Slides.png" id="4_f4a4w"]
+[ext_resource type="Texture2D" uid="uid://badyak7mxkweb" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="5_dxhck"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtacl"]
+texture = ExtResource("1_60xhp")
+texture_margin_left = 31.0
+texture_margin_top = 14.0
+texture_margin_right = 31.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(33.3551, 49.9751, 126.047, 126.025)
+
+[sub_resource type="LabelSettings" id="LabelSettings_icdam"]
+font = ExtResource("2_la3b0")
+font_size = 40
+font_color = Color(0.091, 0.100317, 0.65, 0.972549)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pebfw"]
+texture = ExtResource("4_f4a4w")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 48.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl5ef"]
+atlas = ExtResource("5_dxhck")
+region = Rect2(288, 176, 64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6ehu"]
+font = ExtResource("2_la3b0")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ukdt8")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_top = 2.0
+offset_right = 138.0
+offset_bottom = 84.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dtacl")
+
+[node name="timer_label" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.5
+offset_right = 95.5
+offset_bottom = 54.0
+grow_horizontal = 2
+text = "Tiny swords"
+label_settings = SubResource("LabelSettings_icdam")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Death_panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -213.0
+offset_bottom = 82.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_pebfw")
+
+[node name="TextureRect" type="TextureRect" parent="Death_panel"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 4.0
+offset_right = 112.0
+offset_bottom = 68.0
+texture = SubResource("AtlasTexture_vl5ef")
+
+[node name="death_label" type="Label" parent="Death_panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -121.0
+offset_top = 8.0
+offset_right = -40.0
+offset_bottom = 62.0
+grow_horizontal = 0
+scale = Vector2(1.01818, 0.92)
+text = "86"
+label_settings = SubResource("LabelSettings_v6ehu")
+horizontal_alignment = 1
+vertical_alignment = 1
