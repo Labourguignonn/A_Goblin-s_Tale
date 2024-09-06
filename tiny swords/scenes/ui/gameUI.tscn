@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://j184hts6gb1t"]
+[gd_scene load_steps=18 format=3 uid="uid://j184hts6gb1t"]
 
 [ext_resource type="Texture2D" uid="uid://5a726lkku3qm" path="res://Assets/UI/Banners/Banner_Horizontal.png" id="1_60xhp"]
 [ext_resource type="Script" path="res://scenes/ui/gameUI.gd" id="1_ukdt8"]
 [ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_la3b0"]
 [ext_resource type="Texture2D" uid="uid://chcaocfjphq3p" path="res://Assets/UI/Buttons/Button_Blue_9Slides.png" id="4_f4a4w"]
 [ext_resource type="Texture2D" uid="uid://badyak7mxkweb" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="5_dxhck"]
+[ext_resource type="Texture2D" uid="uid://bv66748gewfs0" path="res://Assets/Effects/fire attack.png" id="6_pq50j"]
+[ext_resource type="Texture2D" uid="uid://cy8dfyyfypa7u" path="res://Assets/UI/GrayRing.png" id="7_6auhn"]
+[ext_resource type="Texture2D" uid="uid://c5e7s8jx3l1g7" path="res://Assets/UI/FireRing.png" id="8_kr4q0"]
+[ext_resource type="Texture2D" uid="uid://bxupg5sl7p8tw" path="res://Assets/Factions/Goblins/Troops/TNT/Dynamite/Dynamite.png" id="9_f6dss"]
+[ext_resource type="Texture2D" uid="uid://uet6ci7fj75c" path="res://Assets/UI/DinamyteRing.png" id="10_7e7lx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtacl"]
 texture = ExtResource("1_60xhp")
@@ -41,6 +46,12 @@ region = Rect2(288, 176, 64, 64)
 font = ExtResource("2_la3b0")
 font_size = 40
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2rx81"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg6hk"]
+atlas = ExtResource("9_f6dss")
+region = Rect2(128, 0, 64, 64)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ukdt8")
@@ -104,3 +115,79 @@ text = "86"
 label_settings = SubResource("LabelSettings_v6ehu")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Fire_attack_bar" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.992157)
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 48.0
+offset_bottom = 49.0
+scale = Vector2(1.78328, 1.78328)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2rx81")
+
+[node name="TextureRect" type="TextureRect" parent="Fire_attack_bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.5069
+offset_top = 13.6779
+offset_right = 38.5069
+offset_bottom = 37.6779
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.513397, 0.513397)
+texture = ExtResource("6_pq50j")
+
+[node name="FireBar" type="TextureProgressBar" parent="Fire_attack_bar"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+max_value = 15.0
+value = 15.0
+fill_mode = 4
+texture_under = ExtResource("7_6auhn")
+texture_progress = ExtResource("8_kr4q0")
+tint_under = Color(0.0110876, 0.0110876, 0.0110876, 1)
+
+[node name="Fire_attack_bar2" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.992157)
+offset_left = 134.0
+offset_top = 8.0
+offset_right = 174.0
+offset_bottom = 48.0
+scale = Vector2(1.78328, 1.78328)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2rx81")
+
+[node name="TextureRect" type="TextureRect" parent="Fire_attack_bar2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.5069
+offset_top = 13.6779
+offset_right = 38.5069
+offset_bottom = 37.6779
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.513397, 0.513397)
+texture = SubResource("AtlasTexture_tg6hk")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Fire_attack_bar2"]
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+max_value = 15.0
+value = 15.0
+fill_mode = 4
+texture_under = ExtResource("7_6auhn")
+texture_progress = ExtResource("10_7e7lx")
+tint_under = Color(0.0110876, 0.0110876, 0.0110876, 1)
+
+[node name="Super_attack_timer" type="Timer" parent="."]
+wait_time = 15.0

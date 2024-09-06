@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jmoox"]
 [ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_5uqo3"]
 [ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Flamethrower.tscn" id="3_4aw38"]
-[ext_resource type="Texture2D" uid="uid://dkmy8cxdue4om" path="res://Assets/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="5_0kkvb"]
+[ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_0wpxf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14u5x"]
 atlas = ExtResource("1_2fmqq")
@@ -257,24 +257,17 @@ radius = 9.24012
 [sub_resource type="CircleShape2D" id="CircleShape2D_cqmgf"]
 radius = 10.6629
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cdmxx"]
-texture = ExtResource("5_0kkvb")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8qeb"]
+texture = ExtResource("5_0wpxf")
+region_rect = Rect2(0, 0, 192, 64)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3aka"]
-bg_color = Color(0.286275, 0.592157, 0.294118, 1)
-border_width_left = 7
-border_width_top = 6
-border_width_bottom = 8
-border_color = Color(0.8, 0.8, 0.8, 0.00392157)
-corner_radius_top_left = 14
-corner_radius_top_right = 7
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 15
-corner_detail = 5
-expand_margin_top = 1.0
-expand_margin_right = 2.0
-anti_aliasing = false
-anti_aliasing_size = 2.685
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opauh"]
+bg_color = Color(0.233162, 0.702951, 0.411018, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing_size = 0.01
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
@@ -309,18 +302,29 @@ debug_color = Color(0.92549, 0.254902, 0.262745, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="HealthProgressBar" type="ProgressBar" parent="."]
-offset_left = -52.0
-offset_top = 2.0
-offset_right = 53.0
-offset_bottom = 29.0
-theme_override_styles/background = SubResource("StyleBoxTexture_cdmxx")
-theme_override_styles/fill = SubResource("StyleBoxFlat_u3aka")
+[node name="Panel" type="Panel" parent="."]
+offset_left = -39.0
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_m8qeb")
+
+[node name="PlayerLife" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -5.0
+offset_right = 33.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_opauh")
 value = 100.0
 rounded = true
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

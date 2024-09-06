@@ -266,4 +266,5 @@ debug_color = Color(0.948607, 0.195184, 0.305533, 0.42)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 
+[connection signal="body_exited" from="Area2D" to="run_from_player" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

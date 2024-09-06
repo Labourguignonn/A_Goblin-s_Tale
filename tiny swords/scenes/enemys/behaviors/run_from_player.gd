@@ -26,12 +26,9 @@ func _physics_process(delta) -> void:
 	input_vector = difference.normalized()
 	var bodies = seeing_area.get_overlapping_bodies()
 	for body in bodies:
-		if body.name == ("player"):
+		if body.is_in_group("player"):
 			is_following = true
 			move(input_vector)
-		else:
-			is_following = false
-			stop(input_vector)
 	enemy.move_and_slide()
 
 func rotate_sprite()-> void:
@@ -39,6 +36,7 @@ func rotate_sprite()-> void:
 		animation_player.flip_h = false
 	elif input_vector.x < 0:
 		animation_player.flip_h = true
+
 func play_run_idle_anim() ->void:
 	#trocar_animação
 			if is_following && !is_attacking:
@@ -53,3 +51,9 @@ func move(input_vector:Vector2)-> void:
 func stop(input_vector:Vector2)-> void:
 	var target_velocity = input_vector * Vector2(0,0)
 	enemy.velocity = lerp(enemy.velocity,target_velocity,0.08)
+
+
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("player"):
+		is_following = false
+		stop(input_vector)# Replace with function body.

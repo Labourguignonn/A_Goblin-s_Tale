@@ -64,7 +64,8 @@ super_attack={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemys"
-2d_physics/layer_3="world"
+2d_physics/layer_3="level 0"
+2d_physics/layer_4="level 1"
 
 [rendering]
 

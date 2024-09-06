@@ -1,6 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bg0g1i8rxqphc"]
+[gd_scene load_steps=25 format=3 uid="uid://bg0g1i8rxqphc"]
 
 [ext_resource type="Texture2D" uid="uid://cs23rhrpr02ik" path="res://Assets/Factions/Goblins/Troops/TNT/Blue/TNT_Blue.png" id="1_3s4nn"]
+[ext_resource type="Script" path="res://scenes/partner.gd" id="1_kcyg3"]
+[ext_resource type="PackedScene" uid="uid://bb1r3o0nxaxpu" path="res://scenes/misc/dynamite.tscn" id="2_8ilq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujlsu"]
 atlas = ExtResource("1_3s4nn")
@@ -157,13 +159,18 @@ animations = [{
 radius = 15.0
 
 [node name="Partner" type="CharacterBody2D"]
+script = ExtResource("1_kcyg3")
+dynamite_prefab = ExtResource("2_8ilq2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_js08r")
 animation = &"shoot"
-frame = 6
-frame_progress = 1.0
+autoplay = "idle"
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 22)
 shape = SubResource("CircleShape2D_1qctu")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -13,7 +13,7 @@ extends CharacterBody2D
 
 @onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword_area: Area2D = $Area2D
-@onready var health_progress_bar:ProgressBar = $HealthProgressBar
+@onready var health_progress_bar:ProgressBar = %PlayerLife
 
 var input_vector: Vector2 = Vector2(0,0)
 var is_running: bool = false
@@ -138,16 +138,13 @@ func die()->void:
 func heal(amount: int)	-> int:
 	health = min(max_health,health + amount)
 	return health
+
 func call_super_attack():
-	if time_over == true && Input.is_action_just_pressed("super_attack"):
+	if Input.is_action_just_pressed("super_attack"):
 		super_attack()
+
 func super_attack()->void:
-	var mouse_position = get_viewport().get_mouse_position()
 	if super_attack_prefab:
 		var flame_thrower = super_attack_prefab.instantiate()
-		flame_thrower.position = Vector2(0,-20)
+		flame_thrower.position = Vector2.ZERO
 		add_child(flame_thrower)
-
-
-##func _on_timer_timeout():
-	##timer_over = true # Replace with function body.

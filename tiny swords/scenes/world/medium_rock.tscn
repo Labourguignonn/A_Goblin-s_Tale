@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://bs41k1ypkqn6v"]
+
+[ext_resource type="Texture2D" uid="uid://cqgjqp8ka5q5a" path="res://Assets/Terrain/Water/Rocks/Rocks_02.png" id="1_wp5tv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dqup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odfmm"]
+atlas = ExtResource("1_wp5tv")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip34e"]
+atlas = ExtResource("1_wp5tv")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58r0o"]
+atlas = ExtResource("1_wp5tv")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0agy3"]
+atlas = ExtResource("1_wp5tv")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lc5p"]
+atlas = ExtResource("1_wp5tv")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybfgx"]
+atlas = ExtResource("1_wp5tv")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvnvg"]
+atlas = ExtResource("1_wp5tv")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0e80"]
+atlas = ExtResource("1_wp5tv")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0jod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odfmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip34e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58r0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0agy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lc5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybfgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvnvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0e80")
+}],
+"loop": true,
+"name": &"little_rock",
+"speed": 9.0
+}]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0dqup")
+
+[node name="Node2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w0jod")
+animation = &"little_rock"
+autoplay = "little_rock"
+frame_progress = 0.690268
