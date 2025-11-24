@@ -14,6 +14,8 @@ extends CharacterBody2D
 @onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_progress_bar: ProgressBar = %PlayerLife
 @onready var basicAttack = preload("res://scenes/systems/basic_attack.tscn")
+@onready var attack_sfx = $AttackSFX as AudioStreamPlayer
+@onready var hit_sfx = $Hit as AudioStreamPlayer
 
 var input_vector: Vector2 = Vector2.ZERO
 var is_running: bool = false
@@ -32,6 +34,7 @@ func _process(delta: float) -> void:
 	# ataque
 	if Input.is_action_just_pressed("attack_side"):
 		attack()
+		attack_sfx.play()
 	call_super_attack()
 
 	# animações
@@ -118,6 +121,7 @@ func rotate_sprite() -> void:
 
 func damage(amount: int) -> void:
 	health -= amount
+	hit_sfx.play()
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
